@@ -71,13 +71,23 @@ public class TrainingActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_training);
 
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
-
+        /*Saving Features Initialization*/ /* INCOMPLETE*/
         mSave = (Button)findViewById(R.id.mSave);
         File dir = new File(path);
         dir.mkdirs();
+        /*/
 
+         */
+        /* Graph initialization*/
+        GraphView sGraph = (GraphView)findViewById(R.id.sGraph);
+        sGraph.getViewport().setYAxisBoundsManual(true);
+        sGraph.getViewport().setMinY(0);
+        sGraph.getViewport().setMaxY(5);
+
+        GraphView mGraph = (GraphView) findViewById(R.id.mGraph);
+        mGraph.getViewport().setYAxisBoundsManual(true);
+        mGraph.getViewport().setMinY(50);
+        mGraph.getViewport().setMaxY(160);
 
         /*****************/
         IntentFilter filter = new IntentFilter("android.bluetooth.device.action.PAIRING_REQUEST");
@@ -86,10 +96,9 @@ public class TrainingActivity extends AppCompatActivity{
         this.getApplicationContext().registerReceiver(new BTBondReceiver(), filter2);
 
         TextView tv = (TextView) findViewById(R.id.labelStatusMsg);
-        String ErrorText  = "Not Connected to HxM ! !";
-        tv.setText(ErrorText);
+        tv.setVisibility(View.VISIBLE);
 
-        mSave.setOnClickListener(new View.OnClickListener() {
+        mSave.setOnClickListener(new View.OnClickListener() { //NonFunctional Saving features, to be done.
             @Override
             public void onClick(View view)
             {
@@ -150,33 +159,30 @@ public class TrainingActivity extends AppCompatActivity{
             _NConnListener = new NewConnectedListener(Newhandler,Newhandler);
             _bt.addConnectedEventListener(_NConnListener);
 
-            TextView tv1 = (EditText)findViewById(R.id.labelHeartRate);
-            tv1.setText("000");
-            tv1 = (EditText)findViewById(R.id.labelInstantSpeed);
+            TextView tv1 = (TextView) findViewById(R.id.labelHeartRate);
+            tv1.setText("0");
+            tv1 = (TextView)findViewById(R.id.labelInstantSpeed);
             tv1.setText("0.0");
-            ((TextView) findViewById(R.id.MACaddr)).setText(BhMacID);
 
             if(_bt.IsConnected())
             {
                 _bt.start();
                 TextView tv = (TextView) findViewById(R.id.labelStatusMsg);
-                String ErrorText  = "Connected to HxM "+DeviceName;
-                tv.setText(ErrorText);
+                tv.setVisibility(View.INVISIBLE);
+                Toast.makeText(getApplicationContext(), "Connected", Toast.LENGTH_SHORT).show();
             }
             else
             {
-                TextView tv = (TextView) findViewById(R.id.labelStatusMsg);
-                String ErrorText  = "Unable to Connect !";
-                tv.setText(ErrorText);
+                Toast.makeText(getApplicationContext(), "Unable to Connect", Toast.LENGTH_LONG).show();
             }
             return true;
         }
-        if (id == R.id.mConnect) {
-            TextView tv = (TextView) findViewById(R.id.labelStatusMsg);
-            String ErrorText  = "Disconnected from HxM!";
-            tv.setText(ErrorText);
+        if (id == R.id.mDisconnect) {
+            Toast.makeText(getApplicationContext(), "Disconnected", Toast.LENGTH_LONG).show();
             _bt.removeConnectedEventListener(_NConnListener);
             _bt.Close();
+            TextView tv = (TextView) findViewById(R.id.labelStatusMsg);
+            tv.setVisibility(View.VISIBLE);
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -216,7 +222,6 @@ public class TrainingActivity extends AppCompatActivity{
         }
     }
 
-
     final Handler Newhandler = new Handler(){
         public void handleMessage(Message msg)
         {
@@ -246,12 +251,11 @@ public class TrainingActivity extends AppCompatActivity{
                     LGSh.appendData(new DataPoint(tdh, HR), true, myDatarecorder.getHRTime().length);
                     mGraph.addSeries(LGSh);
 
-                    tv = (EditText) findViewById(R.id.labelHeartRate);
+                    tv = (TextView) findViewById(R.id.labelHeartRate);
                     System.out.println("Heart Rate Info is " + HeartRatetext);
                     if (tv != null) tv.setText(HeartRatetext);
-                    mGraph.getViewport().setYAxisBoundsManual(true);
-                    mGraph.getViewport().setMinY(50);
-                    mGraph.getViewport().setMaxY(120);
+
+                    //Post 30 second graph follower
                     if((int)tdh>30) {
                         mGraph.getViewport().setXAxisBoundsManual(true);
                         mGraph.getViewport().setMinX((int) tdh - 30);
@@ -260,6 +264,7 @@ public class TrainingActivity extends AppCompatActivity{
                     break;
 
                 case INSTANT_SPEED:
+                    //get the time at which the training began
                     if(!initialized)
                     {
                         t0=currentTimeMillis();
@@ -277,34 +282,31 @@ public class TrainingActivity extends AppCompatActivity{
                     LGSs.appendData(new DataPoint(tds,Speed),true,100);
                     sGraph.addSeries(LGSs);
 
-                    sGraph.getViewport().setYAxisBoundsManual(true);
-                    sGraph.getViewport().setMinY(0);
-                    sGraph.getViewport().setMaxY(10);
+                    //Post 30 second graph follower
                     if((int)tds>30) {
                         sGraph.getViewport().setXAxisBoundsManual(true);
                         sGraph.getViewport().setMinX((int) tds - 30);
                         sGraph.getViewport().setMaxX((int) tds);
-
                     }
 
+                    //Display Rounded value of speed. Simply to not make it extend and go over other texts.
+                    double roundedSpeed = Math.round(Speed* 100.0) / 100.0;
+                    tv = (TextView) findViewById(R.id.labelInstantSpeed);
+                    if (tv != null)tv.setText(String.valueOf(roundedSpeed));
 
-                    tv = (EditText)findViewById(R.id.labelInstantSpeed);
-                    if (tv != null)tv.setText(InstantSpeedtext);
-
+                    //Display Rounded value of distance. Simply to not make it extend and go over other texts.
+                    double DIST = Math.round(myDatarecorder.getDistance()* 10.0) / 10.0;
                     //int distance = Integer.parseInt(String.valueOf(myDatarecorder.getDistance()));
-                    String Sdist = String.valueOf(myDatarecorder.getDistance());
+                    String Sdist = String.valueOf(DIST);
                     tv = (TextView) findViewById(R.id.mDist);
                     if (tv != null)tv.setText(Sdist);
-
-
-
-
 
                     break;
             }
         }
 
     };
+
     private class BTBondReceiver extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -313,6 +315,4 @@ public class TrainingActivity extends AppCompatActivity{
             Log.d("Bond state", "BOND_STATED = " + device.getBondState());
         }
     }
-
-
 }

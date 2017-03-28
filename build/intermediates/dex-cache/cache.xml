@@ -3,11 +3,92 @@
 
     <item
         is-multidex="true"
+        jar="C:\Users\Paul Daccache\Documents\GitHub\Rehapp\app\build\intermediates\exploded-aar\com.android.support.constraint\constraint-layout\1.0.2\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="C:\Users\Paul Daccache\Documents\GitHub\Rehapp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support.constraint-constraint-layout-1.0.2_5d71959ff56f55b82a195b740c3c775ee4972647\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\sdk\extras\m2repository\com\android\support\constraint\constraint-layout-solver\1.0.2\constraint-layout-solver-1.0.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="C:\Users\Paul Daccache\Documents\GitHub\Rehapp\app\build\intermediates\transforms\dex\debug\folders\1000\10\constraint-layout-solver-1.0.2_dce0f5dc4ec87302d879250c45fe5f3f72f02917\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Paul Daccache\Documents\GitHub\Rehapp\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.3.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4b746ef0fd46acb5aaf3d9ab9a4cec22c28d3211">
+        <dex dex="C:\Users\Paul Daccache\Documents\GitHub\Rehapp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-25.3.0_6795004170fd1dbbc178bd92be3a29560195ef0a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Paul Daccache\Documents\GitHub\Rehapp\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.3.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="70f23cb87278f89aa51e6f57e8f0fd5266572d95">
+        <dex dex="C:\Users\Paul Daccache\Documents\GitHub\Rehapp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-25.3.0_ca7357743cd897267084d4c59e81f77a0749abf5\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Paul Daccache\Documents\GitHub\Rehapp\app\build\intermediates\exploded-aar\com.android.support\transition\25.3.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="fbb206f7a119f66ce171d95aae1225a5b209a8b7">
+        <dex dex="C:\Users\Paul Daccache\Documents\GitHub\Rehapp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-transition-25.3.0_8287df2e82836d4bdaeed83d1d5851798e5cffc8\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Paul Daccache\Documents\GitHub\Rehapp\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.3.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Users\Paul Daccache\Documents\GitHub\Rehapp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-25.3.0_efc8763e425172918eeff35b1fffa5b2fef36b7c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Paul Daccache\Documents\GitHub\Rehapp\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="9b9d023a4d37eb57d930a3dcc8b57c9d6be38913">
+        <dex dex="C:\Users\Paul Daccache\Documents\GitHub\Rehapp\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_8ef256c98ff268f55ccc72082be4d02c19c1be20\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Paul Daccache\Documents\GitHub\Rehapp\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.3.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="5cc5ef8347a6bafa14556cbd35230aa9b3431bb0">
+        <dex dex="C:\Users\Paul Daccache\Documents\GitHub\Rehapp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-ui-25.3.0_07628c8d3c49d1ec8c60b93bdb4fa45e3de6d1ef\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Paul Daccache\Documents\GitHub\Rehapp\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.3.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d6a04527c17597019dad82777c5094a3d60d1c33">
+        <dex dex="C:\Users\Paul Daccache\Documents\GitHub\Rehapp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-25.3.0_9af3c62e88d482b3d92ed37bd83b60099539aba5\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="C:\Users\Paul Daccache\Documents\GitHub\Rehapp\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="54249cb4f79aaa8b97903f207f13439b44e11f9b">
+        sha1="ff0502b2a50fc09e0ac18238675f16152b93b84c">
         <dex dex="C:\Users\Paul Daccache\Documents\GitHub\Rehapp\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_61c17d42a7a867bbcdcaa815b6bb3b56aa718053\classes.dex" />
     </item>
     <item
@@ -30,30 +111,12 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Paul Daccache\Documents\GitHub\Rehapp\app\build\intermediates\exploded-aar\com.android.support.constraint\constraint-layout\1.0.2\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
-        <dex dex="C:\Users\Paul Daccache\Documents\GitHub\Rehapp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support.constraint-constraint-layout-1.0.2_5d71959ff56f55b82a195b740c3c775ee4972647\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="C:\Users\Paul Daccache\Documents\GitHub\Rehapp\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.3.0\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="93c1199fcb0a34b980e6fff8350daff62e696ec2">
         <dex dex="C:\Users\Paul Daccache\Documents\GitHub\Rehapp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-fragment-25.3.0_b5024f4d3a2dd9c24c00555078791f28c9ca65cb\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Android\sdk\extras\m2repository\com\android\support\constraint\constraint-layout-solver\1.0.2\constraint-layout-solver-1.0.2.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
-        <dex dex="C:\Users\Paul Daccache\Documents\GitHub\Rehapp\app\build\intermediates\transforms\dex\debug\folders\1000\10\constraint-layout-solver-1.0.2_dce0f5dc4ec87302d879250c45fe5f3f72f02917\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -75,24 +138,6 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Paul Daccache\Documents\GitHub\Rehapp\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.3.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="4b746ef0fd46acb5aaf3d9ab9a4cec22c28d3211">
-        <dex dex="C:\Users\Paul Daccache\Documents\GitHub\Rehapp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-25.3.0_6795004170fd1dbbc178bd92be3a29560195ef0a\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Paul Daccache\Documents\GitHub\Rehapp\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.3.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="70f23cb87278f89aa51e6f57e8f0fd5266572d95">
-        <dex dex="C:\Users\Paul Daccache\Documents\GitHub\Rehapp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-25.3.0_ca7357743cd897267084d4c59e81f77a0749abf5\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="C:\Users\Paul Daccache\Documents\GitHub\Rehapp\app\HxMBT.jar"
         jumboMode="true"
         optimize="true"
@@ -111,48 +156,12 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Paul Daccache\Documents\GitHub\Rehapp\app\build\intermediates\exploded-aar\com.android.support\transition\25.3.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="fbb206f7a119f66ce171d95aae1225a5b209a8b7">
-        <dex dex="C:\Users\Paul Daccache\Documents\GitHub\Rehapp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-transition-25.3.0_8287df2e82836d4bdaeed83d1d5851798e5cffc8\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="C:\Users\Paul Daccache\Documents\GitHub\Rehapp\app\build\intermediates\exploded-aar\com.android.volley\volley\1.0.0\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="2cd4b982617e544728de0782d718a58ce1b06e3f">
         <dex dex="C:\Users\Paul Daccache\Documents\GitHub\Rehapp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.volley-volley-1.0.0_4e2dc87f95a96dcc9abf62431636c77154ecdcb5\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Paul Daccache\Documents\GitHub\Rehapp\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.3.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="C:\Users\Paul Daccache\Documents\GitHub\Rehapp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-25.3.0_efc8763e425172918eeff35b1fffa5b2fef36b7c\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Paul Daccache\Documents\GitHub\Rehapp\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="22d561a23309d6d05a8db3c28d906d73b41e9cdd">
-        <dex dex="C:\Users\Paul Daccache\Documents\GitHub\Rehapp\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_8ef256c98ff268f55ccc72082be4d02c19c1be20\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Paul Daccache\Documents\GitHub\Rehapp\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.3.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="5cc5ef8347a6bafa14556cbd35230aa9b3431bb0">
-        <dex dex="C:\Users\Paul Daccache\Documents\GitHub\Rehapp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-ui-25.3.0_07628c8d3c49d1ec8c60b93bdb4fa45e3de6d1ef\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -171,15 +180,6 @@
         revision="25.0.2"
         sha1="dd84903d2e1af25a6081ef9038ad863cb14ca3a0">
         <dex dex="C:\Users\Paul Daccache\Documents\GitHub\Rehapp\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-25.3.0_ced53534f39b563e23f3ea1fff8f988cc2eef87b\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Paul Daccache\Documents\GitHub\Rehapp\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.3.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="d6a04527c17597019dad82777c5094a3d60d1c33">
-        <dex dex="C:\Users\Paul Daccache\Documents\GitHub\Rehapp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-25.3.0_9af3c62e88d482b3d92ed37bd83b60099539aba5\classes.dex" />
     </item>
 
 </items>

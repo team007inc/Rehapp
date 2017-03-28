@@ -41,14 +41,11 @@ public class ProfileClient extends AppCompatActivity {
                 Intent Intent = new Intent(ProfileClient.this, TrainingActivity.class);
                 view.getContext().startActivity(Intent);}
         });
-
-
-
     }
 
-    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.client_menu, menu);
         return true;
     }
 
@@ -60,8 +57,12 @@ public class ProfileClient extends AppCompatActivity {
                 finish();
                 startActivity(new Intent(this, LoginActivity.class));
                 break;
-            case R.id.menuSettings:
+            case R.id.editProfile:
                 Toast.makeText(this, "Settings is empty so far", Toast.LENGTH_LONG).show();
+                //startActivity(new Intent(this, ClientEditActivity.class));
+                //Create an activity so that it saves Age and Weight.
+                //This means we need to create a client class so that we can send extras from one activity to another.
+                //The information is needed so we can shareto the databse dynamically, and the graph can be configured easier as well.
                 break;
         }
         return true;

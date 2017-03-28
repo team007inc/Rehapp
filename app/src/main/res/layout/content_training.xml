@@ -18,67 +18,90 @@
         android:layout_width="match_parent"
         android:layout_alignParentEnd="true"
         android:id="@+id/mGraph"
-        android:layout_height="350px" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Name"
-        android:ems="10"
-        android:id="@+id/labelHeartRate"
-        android:layout_above="@+id/labelInstantSpeed"
-        android:layout_alignStart="@+id/labelInstantSpeed" />
-
-    <TextView
-        android:text="TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/MACaddr"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/labelStatusMsg"
-        android:text="Status"
-        android:layout_alignParentBottom="true"
-        android:layout_alignEnd="@+id/labelInstantSpeed" />
-
-    <com.jjoe64.graphview.GraphView
-        android:layout_width="match_parent"
-        android:id="@+id/sGraph"
-        android:layout_height="350px"
-        android:layout_below="@+id/mGraph"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="21dp" />
-
-    <TextView
-        android:text="TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/mDist"
-        android:layout_above="@+id/labelInstantSpeed"
-        android:layout_alignParentEnd="true" />
+        android:layout_height="800px" />
 
     <Button
         android:text="Save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/mSave"
-        android:layout_above="@+id/mDist"
-        android:layout_toEndOf="@+id/labelHeartRate"
-        android:layout_marginStart="13dp" />
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
-    <EditText
+    <TextView
+        android:text="Heart Rate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Name"
-        android:ems="10"
+        android:id="@+id/HRtext"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:id="@+id/labelInstantSpeed"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:text="0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/labelHeartRate"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/HRtext"
+        android:layout_toEndOf="@+id/HRtext"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp" />
+
+    <TextView
+        android:text="Speed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="23dp"
+        android:layout_marginStart="23dp"
+        android:id="@+id/Speedtext"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/mSave"
+        android:layout_toEndOf="@+id/mSave" />
+
+    <TextView
+        android:text="Distance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/Speedtext"
+        android:layout_alignLeft="@+id/Speedtext"
+        android:layout_alignStart="@+id/Speedtext"
+        android:id="@+id/Distancetext" />
+
+    <com.jjoe64.graphview.GraphView
+        android:layout_width="match_parent"
+        android:id="@+id/sGraph"
+        android:layout_height="400px"
+        android:layout_below="@+id/mGraph"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:text="Not Connected!"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/labelStatusMsg"
+        android:layout_alignTop="@+id/mSave"
+        android:layout_alignRight="@+id/labelHeartRate"
+        android:layout_alignEnd="@+id/labelHeartRate"
+        android:textColor="@android:color/holo_red_dark" />
+
+    <TextView
+        android:text="0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mDist"
+        android:layout_above="@+id/labelInstantSpeed"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>
