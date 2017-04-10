@@ -20,12 +20,6 @@
             android:orientation="vertical">
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="USER NAME"
-                android:textAlignment="center" />
-
-            <TextView
                 android:id="@+id/txtViewClientName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -35,18 +29,98 @@
 
 
             <TextView
+                android:text="TextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="USER EMAIL"
+                android:id="@+id/massDisp"
                 android:textAlignment="center" />
 
             <TextView
-                android:id="@+id/txtViewClientEmail"
+                android:text="TextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="mail"
-                android:textAlignment="center"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+                android:id="@+id/ageDisp"
+                android:textAlignment="center" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+
+            <TextView
+                android:text="Calories Burned"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/CaloriesTxt"
+                android:textAppearance="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Large"
+                android:textAlignment="center" />
+
+            <TextView
+                android:text="0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtViewClientCalories"
+                android:textAlignment="center" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="25dp" />
+
+            <TextView
+                android:text="Distance Travelled"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/DistanceTxt"
+                android:textAppearance="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Large"
+                android:textAlignment="center" />
+
+            <TextView
+                android:text="0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtViewClientDistance"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                android:textAlignment="center" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="25dp" />
+
+            <TextView
+                android:text="Goal of the Day"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/GoalText"
+                android:textAppearance="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Large"
+                android:textAlignment="center" />
+
+            <TextView
+                android:text="0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/mGoal"
+                android:textAlignment="center" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="25dp" />
+
+            <Button
+                android:text="Start Training"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/mStart" />
+
+            <TextView
+                android:text="Goal Not Met!"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/mGoalFeedback"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textAlignment="center" />
 
         </LinearLayout>
 
