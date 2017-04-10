@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_goal_pop_up"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="a390l.team.rehapp.GoalPopUpActivity">
+
+
+    <Button
+        android:text="Set Caloric Goal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/SetCals"
+        android:textAlignment="center"
+        android:textStyle="normal|bold"
+        android:textSize="18sp"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginBottom="112dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        tools:layout_editor_absoluteX="85dp"
+        android:id="@+id/txtCalsgoal"
+        app:layout_constraintBottom_toTopOf="@+id/SetCals"
+        android:layout_marginBottom="80dp"
+        android:textAlignment="center"
+        android:textStyle="normal|bold" />
+
+
+
+</android.support.constraint.ConstraintLayout>

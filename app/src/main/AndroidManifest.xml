@@ -24,7 +24,10 @@
         <activity android:name=".RegisterClient" />
         <activity android:name=".ProfileClient" />
         <activity android:name=".ProfileTherapist" />
-        <activity android:name=".TrainingActivity"/>
+        <activity android:name=".TrainingActivity" />
+        <activity android:name=".ClientEditActivity" />
+        <activity android:name=".GoalPopUpActivity"
+            android:theme="@style/AppTheme.PopUpTheme"></activity>
     </application>
 
 </manifest>

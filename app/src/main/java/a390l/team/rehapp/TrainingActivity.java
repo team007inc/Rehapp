@@ -42,6 +42,7 @@ import java.util.Set;
 
 import zephyr.android.HxMBT.*;
 
+import static java.lang.Math.abs;
 import static java.lang.System.currentTimeMillis;
 
 public class TrainingActivity extends AppCompatActivity{
@@ -49,6 +50,11 @@ public class TrainingActivity extends AppCompatActivity{
     public Recorder myDatarecorder = new Recorder();
     LineGraphSeries<DataPoint> LGSh = new LineGraphSeries<DataPoint>();
     LineGraphSeries<DataPoint> LGSs = new LineGraphSeries<DataPoint>();
+
+
+
+    public Client myClient;
+
 
     BluetoothAdapter adapter = null;
     BTClient _bt;
@@ -60,7 +66,18 @@ public class TrainingActivity extends AppCompatActivity{
     long t0 = 0;
     int HR;
     static boolean initialized = false;
-
+    double calories  = 0;
+    double DIST = 0;
+    double Speed = 0;
+    double lastSpeed =0;
+    double lastSpeedTime =0;
+    boolean _30SecPass = false;
+    boolean isConnected = false;
+    //double oldTime, currTime;
+    //int newHR, oldHR, currHR;
+    int HR30;
+    int Age = 0;
+    int Mass = 0;
     public Button mSave;
     public String path = Environment.DIRECTORY_DOCUMENTS + "/HXMAPP";
     //getInternalStorageDirectory().getAbsolutePath() + "/HXMAPP";
@@ -70,8 +87,8 @@ public class TrainingActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_training);
-
-        /*Saving Features Initialization*/ /* INCOMPLETE*/
+        Age = (int) getIntent().getExtras().getInt("Age");
+        Mass = (int) getIntent().getExtras().getInt("Mass");
         mSave = (Button)findViewById(R.id.mSave);
         File dir = new File(path);
         dir.mkdirs();
@@ -102,7 +119,7 @@ public class TrainingActivity extends AppCompatActivity{
             @Override
             public void onClick(View view)
             {
-/*
+/*              // Not used anymore
                 String filename = "HXM";
 
                 String  saveText = "Hi";
@@ -119,11 +136,25 @@ public class TrainingActivity extends AppCompatActivity{
 
                 Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_LONG).show();
 */
+                if(isConnected)
+                {
+                    _bt.removeConnectedEventListener(_NConnListener);
+                    _bt.Close();
+                    TextView tv = (TextView) findViewById(R.id.labelStatusMsg);
+                    tv.setVisibility(View.VISIBLE);
+                    isConnected = false;
+                }
+                Intent ii = new Intent();
+                ii.putExtra("CaloriesReturn", (int)calories);
+                ii.putExtra("DistanceReturn", DIST);
+                if(calories==0) setResult(RESULT_CANCELED,ii);
+                else setResult(RESULT_OK,ii);
+                Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_LONG).show();
+                finish();
+
             }
 
         });
-
-
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -137,56 +168,83 @@ public class TrainingActivity extends AppCompatActivity{
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.mConnect) {
-            String BhMacID = "00:07:80:0E:B1:E2";
-            adapter = BluetoothAdapter.getDefaultAdapter();
-            Set<BluetoothDevice> pairedDevices = adapter.getBondedDevices();
-            if (pairedDevices.size() > 0)
-            {
-                for (BluetoothDevice device : pairedDevices)
-                {
-                    if (device.getName().startsWith("HXM"))
-                    {
-                        BluetoothDevice btDevice = device;
-                        BhMacID = btDevice.getAddress();
-                        break;
+            if(!isConnected) {
+                String BhMacID = "00:07:80:0E:B1:E2";
+                adapter = BluetoothAdapter.getDefaultAdapter();
+                Set<BluetoothDevice> pairedDevices = adapter.getBondedDevices();
+                if (pairedDevices.size() > 0) {
+                    for (BluetoothDevice device : pairedDevices) {
+                        if (device.getName().startsWith("HXM")) {
+                            BluetoothDevice btDevice = device;
+                            BhMacID = btDevice.getAddress();
+                            break;
+                        }
                     }
                 }
-            }
 
-            BluetoothDevice Device = adapter.getRemoteDevice(BhMacID);
-            String DeviceName = Device.getName();
-            _bt = new BTClient(adapter, BhMacID);
-            _NConnListener = new NewConnectedListener(Newhandler,Newhandler);
-            _bt.addConnectedEventListener(_NConnListener);
+                BluetoothDevice Device = adapter.getRemoteDevice(BhMacID);
+                String DeviceName = Device.getName();
+                _bt = new BTClient(adapter, BhMacID);
+                _NConnListener = new NewConnectedListener(Newhandler, Newhandler);
+                _bt.addConnectedEventListener(_NConnListener);
 
-            TextView tv1 = (TextView) findViewById(R.id.labelHeartRate);
-            tv1.setText("0");
-            tv1 = (TextView)findViewById(R.id.labelInstantSpeed);
-            tv1.setText("0.0");
+                TextView tv1 = (TextView) findViewById(R.id.labelHeartRate);
+                tv1.setText("0");
+                tv1 = (TextView) findViewById(R.id.labelInstantSpeed);
+                tv1.setText("0.0");
 
-            if(_bt.IsConnected())
-            {
-                _bt.start();
-                TextView tv = (TextView) findViewById(R.id.labelStatusMsg);
-                tv.setVisibility(View.INVISIBLE);
-                Toast.makeText(getApplicationContext(), "Connected", Toast.LENGTH_SHORT).show();
+                if (_bt.IsConnected()) {
+                    _bt.start();
+                    TextView tv = (TextView) findViewById(R.id.labelStatusMsg);
+                    tv.setVisibility(View.INVISIBLE);
+                    Toast.makeText(getApplicationContext(), "Connected", Toast.LENGTH_SHORT).show();
+                    isConnected = true;
+                } else {
+                    Toast.makeText(getApplicationContext(), "Unable to Connect", Toast.LENGTH_LONG).show();
+                }
+                return true;
             }
-            else
-            {
-                Toast.makeText(getApplicationContext(), "Unable to Connect", Toast.LENGTH_LONG).show();
-            }
-            return true;
+            else Toast.makeText(getApplicationContext(), "Already Connected", Toast.LENGTH_LONG).show();
+
         }
         if (id == R.id.mDisconnect) {
+            if(isConnected)
+            {
+                Toast.makeText(getApplicationContext(), "Disconnected", Toast.LENGTH_LONG).show();
+                _bt.removeConnectedEventListener(_NConnListener);
+                _bt.Close();
+                TextView tv = (TextView) findViewById(R.id.labelStatusMsg);
+                tv.setVisibility(View.VISIBLE);
+                isConnected = false;
+                return true;
+            }
+            else Toast.makeText(getApplicationContext(), "Cannot Disconnect if it is not Connected",
+                    Toast.LENGTH_LONG).show();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        if(isConnected)
+        {
             Toast.makeText(getApplicationContext(), "Disconnected", Toast.LENGTH_LONG).show();
             _bt.removeConnectedEventListener(_NConnListener);
             _bt.Close();
             TextView tv = (TextView) findViewById(R.id.labelStatusMsg);
             tv.setVisibility(View.VISIBLE);
-            return true;
+            isConnected = false;
         }
-        return super.onOptionsItemSelected(item);
+        else
+        {
+            TextView tv = (TextView) findViewById(R.id.labelStatusMsg);
+            tv.setVisibility(View.VISIBLE);
+            isConnected = false;
+        }
+        finish();
     }
+
 
 
     private class BTBroadcastReceiver extends BroadcastReceiver {
@@ -233,13 +291,57 @@ public class TrainingActivity extends AppCompatActivity{
                         initialized = true;
                     }
 
+                    double thcurr = System.currentTimeMillis();
+                    double tdh = (thcurr - t0) / 1000;
+                    double roundedTime = Math.round(thcurr* 1000.0) / 1000.0;
+
+                    double td = thcurr - t0;
+                    td = Math.round(td);
+                    double tdsec = Math.round(td* 1000.0) / 1000000.0;
+                    if(tdsec%30>5) _30SecPass = true;
+
                     String HeartRatetext = msg.getData().getString("HeartRate");
                     HR = Integer.parseInt(HeartRatetext);
-                    long thcurr = System.currentTimeMillis();
-                    double tdh = (thcurr - t0) / 1000;
+
                     myDatarecorder.AddHRDatapoint(tdh, HR);
 
+
+
                     GraphView mGraph = (GraphView) findViewById(R.id.mGraph);
+
+                    if((tdsec%30<5)&&tdsec>30&&_30SecPass)
+                    {
+                        _30SecPass = false;
+                        double last30Sec =0;
+                        int lasttime =0;
+                        boolean out= false;
+                        for(int i =0; i<myDatarecorder.getHeartrate().length; i++)
+                        {
+                            if(td - myDatarecorder.getHRTime()[myDatarecorder.getHeartrate().length -i-1] >=30)
+                            {
+                                lasttime = myDatarecorder.getHeartrate().length -i -1;
+                                last30Sec = myDatarecorder.getHRTime()[myDatarecorder.getHeartrate().length -i -1];
+                                out = true;
+                                break;
+                            }
+                        }
+                        HR30 = 0;
+                        for(int i =0; i<lasttime; i++)
+                        {
+                            HR30 = HR30 + myDatarecorder.getHeartrate()[myDatarecorder.getHeartrate().length-i-1];
+                        }
+                        HR30 = (int)((double)HR30/last30Sec);
+
+                        calories = ((-55.0969 + 0.6309*HR30  + 0.1988*Mass + 0.2017*Age)/(2*4.184)) + calories;
+
+                        tv = (TextView) findViewById(R.id.mCalories);
+                        tv.setText(String.valueOf(Math.round(calories*100)/100));
+                    }
+
+                    //newHR = (oldHR*oldTime + currHR)/currTime
+
+
+
 /*
                     for(int i = 0;i<10;i++)
                     {
@@ -255,12 +357,15 @@ public class TrainingActivity extends AppCompatActivity{
                     System.out.println("Heart Rate Info is " + HeartRatetext);
                     if (tv != null) tv.setText(HeartRatetext);
 
-                    //Post 30 second graph follower
-                    if((int)tdh>30) {
+                    //Post 10 second graph follower
+                    if((int)tdh>10) {
                         mGraph.getViewport().setXAxisBoundsManual(true);
-                        mGraph.getViewport().setMinX((int) tdh - 30);
+                        mGraph.getViewport().setMinX((int) tdh - 10);
                         mGraph.getViewport().setMaxX((int) tdh);
                     }
+
+
+
                     break;
 
                 case INSTANT_SPEED:
@@ -272,7 +377,7 @@ public class TrainingActivity extends AppCompatActivity{
                     }
 
                     String InstantSpeedtext = msg.getData().getString("InstantSpeed");
-                    Double Speed = Double.parseDouble(InstantSpeedtext);
+                    Speed = Double.parseDouble(InstantSpeedtext);
 
                     long tscurr = System.currentTimeMillis();
                     double tds = (tscurr - t0)/1000;
@@ -294,13 +399,25 @@ public class TrainingActivity extends AppCompatActivity{
                     tv = (TextView) findViewById(R.id.labelInstantSpeed);
                     if (tv != null)tv.setText(String.valueOf(roundedSpeed));
 
+
+                    //The two conditions at which the distance must be calculated when the speed is increasing or decreasing using simple mathematic formula as if it was linear.
+                    if(lastSpeedTime<Speed)
+                    {
+                        DIST=DIST + (Speed-lastSpeed)*abs(tds - lastSpeedTime)*0.5 + lastSpeed*abs(tds - lastSpeedTime);
+                    }
+                    else
+                    {
+                        DIST=DIST + (lastSpeed-Speed)*abs(tds - lastSpeedTime)*0.5 + Speed*abs(tds - lastSpeedTime);
+                    }
+
+                    // Once the function of distance calculation is complete, update the values for the next round.
+                    lastSpeedTime = tds;
+                    lastSpeed = Speed;
+
                     //Display Rounded value of distance. Simply to not make it extend and go over other texts.
-                    double DIST = Math.round(myDatarecorder.getDistance()* 10.0) / 10.0;
-                    //int distance = Integer.parseInt(String.valueOf(myDatarecorder.getDistance()));
-                    String Sdist = String.valueOf(DIST);
+                    String Sdist = String.valueOf(Math.round(DIST* 100.0) / 100.0);
                     tv = (TextView) findViewById(R.id.mDist);
                     if (tv != null)tv.setText(Sdist);
-
                     break;
             }
         }

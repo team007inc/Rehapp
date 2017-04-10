@@ -61,7 +61,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="9b9d023a4d37eb57d930a3dcc8b57c9d6be38913">
+        sha1="402f3c7aa8db243efe697f6c796e510552a0b739">
         <dex dex="C:\Users\Paul Daccache\Documents\GitHub\Rehapp\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_8ef256c98ff268f55ccc72082be4d02c19c1be20\classes.dex" />
     </item>
     <item
@@ -88,7 +88,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="ff0502b2a50fc09e0ac18238675f16152b93b84c">
+        sha1="f19e66bc5225eba34b23f1b5774871fb089dd648">
         <dex dex="C:\Users\Paul Daccache\Documents\GitHub\Rehapp\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_61c17d42a7a867bbcdcaa815b6bb3b56aa718053\classes.dex" />
     </item>
     <item
