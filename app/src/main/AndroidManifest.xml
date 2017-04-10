@@ -3,6 +3,8 @@
     package="a390l.team.rehapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 
     <application
         android:allowBackup="true"
@@ -21,7 +23,11 @@
         <activity android:name=".RegisterTherapist" />
         <activity android:name=".RegisterClient" />
         <activity android:name=".ProfileClient" />
-        <activity android:name=".ProfileTherapist"></activity>
+        <activity android:name=".ProfileTherapist" />
+        <activity android:name=".TrainingActivity" />
+        <activity android:name=".ClientEditActivity" />
+        <activity android:name=".GoalPopUpActivity"
+            android:theme="@style/AppTheme.PopUpTheme"></activity>
     </application>
 
 </manifest>

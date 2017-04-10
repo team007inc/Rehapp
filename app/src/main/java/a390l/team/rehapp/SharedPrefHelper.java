@@ -18,6 +18,10 @@ public class SharedPrefHelper {
     private static final String KEY_USERNAME = "username";
     private static final String KEY_USER_EMAIL = "email";
     private static final String KEY_USER_ID = "userid";
+    private static final String KEY_USER_MASS = "userMass";
+    private static final String KEY_USER_AGE = "userAge";
+    private static final String KEY_USER_DISTANCE = "userDistance";
+    private static final String KEY_USER_CALORIES = "userCalories";
 
 
     private SharedPrefHelper(Context context) {
@@ -78,4 +82,33 @@ public class SharedPrefHelper {
         SharedPreferences sharedPreferences = mContext.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         return sharedPreferences.getString(KEY_USER_EMAIL, null);
     }
+
+
+    public int getUserMass(){
+        SharedPreferences sharedPreferences = mContext.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getInt(KEY_USER_MASS, 0);
+    }
+
+    public int getUserAge(){
+        SharedPreferences sharedPreferences = mContext.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getInt(KEY_USER_AGE, 0);
+    }
+
+    public double getUserDistance(){
+        SharedPreferences sharedPreferences = mContext.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getFloat(KEY_USER_DISTANCE, 0);
+    }
+
+    public int getUserCalories(){
+        SharedPreferences sharedPreferences = mContext.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getInt(KEY_USER_CALORIES, 0);
+    }
+
+    public int getUserID(){
+        SharedPreferences sharedPreferences = mContext.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getInt(KEY_USER_ID, 0);
+    }
+
+
+
 }

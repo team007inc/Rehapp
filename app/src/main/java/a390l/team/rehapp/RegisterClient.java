@@ -24,7 +24,7 @@ import java.util.Map;
 public class RegisterClient extends AppCompatActivity implements View.OnClickListener {
 
     private Button btnRegister;
-    private EditText editTextUsername, editTextAge, editTextWeight, editTextEmail, editTextPassword;
+    private EditText editTextUsername, editTextAge, editTextMass, editTextEmail, editTextPassword;
     private ProgressDialog progressDialog;
 
     @Override
@@ -34,11 +34,14 @@ public class RegisterClient extends AppCompatActivity implements View.OnClickLis
 
         //gotoPertinentProfileActivity();
 
+        // @IVAN ADD THE PART TO SEND THE MASS AND AGE TO THE DATABASE WHEN YOU REGISTER
+        // YOU WILL ALSO HAVE TO MAKE A FUNCTION THAT UPDATES MASS, AGE CALORIC GOALS, AND CURRENT CALORIES BURNED
+        // I PREFILLED SOME STUFF, BUT YOU MUST DO IT IN ORDER TO MAKE IT FUNCTION CORRECTLY, ONLY YOU KNOW HOW THIS WORKS.
 
         btnRegister = (Button) findViewById(R.id.btnClientRegister);
         editTextUsername = (EditText) findViewById(R.id.txtEditClientName);
         editTextAge = (EditText) findViewById(R.id.txtEditClientAge);
-        editTextWeight = (EditText) findViewById(R.id.txtEditClientWeight);
+        editTextMass = (EditText) findViewById(R.id.txtEditClientMass);
         editTextEmail = (EditText) findViewById(R.id.txtEditClientEmail);
         editTextPassword = (EditText) findViewById(R.id.txtEditClientPass);
 
@@ -92,6 +95,8 @@ public class RegisterClient extends AppCompatActivity implements View.OnClickLis
 //                params.put("clientweight", username);
                 params.put("email", clientEmail);
                 params.put("password", clientPassword);
+                //params.put("Distance",0)
+                //params.put("Calories",0)
                 return params;
             }
         };
